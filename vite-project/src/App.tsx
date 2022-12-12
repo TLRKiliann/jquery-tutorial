@@ -7,11 +7,18 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  $(() => {
-      setTimeout(() => {
-          alert('jQuery triggered via app.js')
-      }, 2500);
+  $(function() {
+    $(".button").click(function() {
+      $("p").hide();
+    });
   });
+
+  $(function() {
+    $("p.intro").css("cursor", "pointer")
+    $("p.intro").click(function() {
+      $("p.intro").css("color", "yellow")
+    })
+  })
 
   return (
     <div className="App">
@@ -28,7 +35,12 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <p>
+
+        <button className="button">
+          Hide paragraph Tag !
+        </button>
+
+        <p className="intro">
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
