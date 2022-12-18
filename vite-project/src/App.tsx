@@ -58,6 +58,27 @@ function App() {
     });
   });
 
+  $(function() {
+    $("button.animation").click(function() {
+      $("p.animation").animate({fontSize:"40px", margin:"auto"}, 3000);
+    });
+  });
+
+  $(function() {
+    $("button.animation2").click(function() {
+      $("p.animation2").animate({marginLeft:"700px"}, 3000);
+    });
+  });
+
+  $(function() {
+    $("#append").click(function() {
+      $(".append--p:first").append("--Append text is to cool!--");
+    });
+    $("#prepend").click(function() {
+      $(".prepend--p:last").prepend("--Prepend text is to easy!--");
+    });
+  });
+
   return (
     <div className="App">
       <div>
@@ -71,7 +92,34 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
 
+        <p className="animation">
+          Animate with jQuery !!!
+        </p>
+        <button className="animation">
+          Animate !
+        </button>
+
+        <p className="animation2">
+          Animate 2 with jQuery !!!
+        </p>
+        <button className="animation2">
+          Animate 2 !
+        </button>
+
         <div>
+          <button id="append">Append text</button>
+          <button id="prepend">Prepend text</button>
+
+          <p className="append--p prepend--p">
+            1 - My superLorem ipsum dolor sit amet, consectetur adipiscing elit
+          </p>
+          <p className="append--p prepend--p">
+            2 - My superLorem ipsum dolor sit amet, consectetur adipiscing elit
+          </p>
+          <p className="append--p prepend--p">
+            3 - My superLorem ipsum dolor sit amet, consectetur adipiscing elit
+          </p>
+
           <button id="slide--down">slide dow</button>
           <button id="slide--up">slide up</button>
           <button id="slide--toggle">slide toggle</button>
