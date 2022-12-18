@@ -9,6 +9,9 @@ function App() {
 
   $(function() {
     $(".button").click(function() {
+      $("p").show();
+    });
+    $(".button--hide").click(function() {
       $("p").hide();
     });
   });
@@ -17,8 +20,43 @@ function App() {
     $("p.intro").css("cursor", "pointer")
     $("p.intro").click(function() {
       $("p.intro").css("color", "yellow")
-    })
-  })
+    });
+  });
+
+  $(function() {
+    $("button.test").click(function() {
+      $("p.test").hide()
+    });
+  });
+
+  $(function() {
+    $("button.fade-in").click(function() {
+      $("#paragraph").fadeIn("5000", function() {
+        console.log("fadein complete")
+      });
+    });
+    $("button.fade-out").click(function() {
+      $("#paragraph").fadeOut("5000", function() {
+        console.log("fadeout complete")
+      });
+    });
+  });
+
+  $(function() {
+    $("#slide--down").click(function() {
+      $("#paragraph").slideDown("2000", "linear");
+    });
+    $("#slide--up").click(function() {
+      $("#paragraph").slideUp("2000", "linear");
+    });
+    $("#slide--toggle").click(function() {
+      $("#paragraph").slideToggle("slow", function() {
+        let newText = $('p');
+        newText.append("<i>New TEXT append HERE !</i>");
+        $("#paragraph").html(newText);
+      });
+    });
+  });
 
   return (
     <div className="App">
@@ -32,11 +70,42 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
+
+        <div>
+          <button id="slide--down">slide dow</button>
+          <button id="slide--up">slide up</button>
+          <button id="slide--toggle">slide toggle</button>
+
+          <button className="fade-in">fade-in</button>
+          <button className="fade-out">fade-out</button>
+
+          <p id="paragraph">
+            My superLorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut 
+            enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
+            ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
+            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+            deserunt mollit anim id est laborum.
+          </p>
+        </div>
+
+        <p className="test">
+          My test jquery
+        </p>
+        <button className="test">
+          Click to Hide !
+        </button>
+
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
 
         <button className="button">
+          Show paragraph Tag !
+        </button>
+
+        <button className="button--hide">
           Hide paragraph Tag !
         </button>
 
